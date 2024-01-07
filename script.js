@@ -1,10 +1,16 @@
-const icons = document.querySelectorAll("[data-icon]");
+const question_and_answer = document.querySelectorAll(
+     "[data-question_and_answer]"
+);
+const plus = document.querySelector("[data-plus]");
 
-icons.forEach((icon) => {
-     icon.addEventListener("click", () => openAnswers(icon));
+question_and_answer.forEach((qanda) => {
+     qanda.addEventListener("click", () => {
+          if (qanda.classList.contains("active")) {
+               qanda.classList.remove("active");
+               qanda.children[0].children[1].innerHTML = "<span>+</span>";
+          } else {
+               qanda.classList.add("active");
+               qanda.children[0].children[1].innerHTML = "<span>-</span>";
+          }
+     });
 });
-
-function openAnswers(icon) {
-     icon.innerHTML = "hello";
-     console.log(icon);
-}
